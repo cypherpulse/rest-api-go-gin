@@ -1,0 +1,45 @@
+# Binaries
+/bin/
+/build/
+/dist/
+
+# Go build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, coverage output
+*.test
+*.out
+coverage.txt
+
+# Go workspace files
+go.work
+go.work.sum
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/editor files
+.vscode/
+.idea/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Database / local runtime files
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+temp/
