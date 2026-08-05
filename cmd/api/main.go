@@ -7,9 +7,8 @@ import (
 	"rest-api-in-gin/internal/database"
 	"rest-api-in-gin/internal/env"
 
-	_ "github.com/mattn/go-sqlite3"
-
 	_ "github.com/joho/godotenv/autoload"
+	_ "github.com/mattn/go-sqlite3"
 )
 
 // @title Go Gin Rest API
@@ -37,7 +36,7 @@ func main() {
 	models := database.NewModels(db)
 	app := &application{
 		port:      env.GetEnvInt("PORT", 8080),
-		jwtSecret: env.GetEnvString("JWT_SECRET", "some-secret-1234567"),
+		jwtSecret: env.GetEnvString("JWT_SECRET", "some-secret-123456"),
 		models:    models,
 	}
 
