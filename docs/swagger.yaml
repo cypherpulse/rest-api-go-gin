@@ -41,6 +41,39 @@ definitions:
       name:
         type: string
     type: object
+  main.loginRequest:
+    properties:
+      email:
+        type: string
+      password:
+        minLength: 8
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  main.loginResponse:
+    properties:
+      token:
+        type: string
+      userId:
+        type: integer
+    type: object
+  main.registerRequest:
+    properties:
+      email:
+        type: string
+      name:
+        minLength: 2
+        type: string
+      password:
+        minLength: 8
+        type: string
+    required:
+    - email
+    - name
+    - password
+    type: object
 info:
   contact: {}
   description: A rest API in Go using Gin framework
@@ -70,6 +103,50 @@ paths:
       summary: Returns all events for a given attendee
       tags:
       - attendees
+  /api/v1/auth/login:
+    post:
+      consumes:
+      - application/json
+      description: Logs in a user
+      parameters:
+      - description: User
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/main.loginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.loginResponse'
+      summary: Logs in a user
+      tags:
+      - auth
+  /api/v1/auth/register:
+    post:
+      consumes:
+      - application/json
+      description: Registers a new user
+      parameters:
+      - description: User
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/main.registerRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/database.User'
+      summary: Registers a new user
+      tags:
+      - auth
   /api/v1/events:
     get:
       consumes:
